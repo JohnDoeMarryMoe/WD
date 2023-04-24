@@ -1,0 +1,74 @@
+var fnameError = document.getElementById('fname-error');
+var lnameError = document.getElementById('lname-error');
+var phoneError = document.getElementById('phone-error');
+var submitError = document.getElementById('submit-error');
+
+
+function validateFName() {
+    var name = document.getElementById('fname').value;
+
+    if(name.length == 0) {
+        fnameError.innerHTML = 'Name is required';
+        return false;
+    }
+
+    if(!name.match(/^[a-zA-Z]/)) {
+        fnameError.innerHTML = 'Only Alphabets';
+        return false;
+    }
+
+    fnameError.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+    return true;
+    
+}
+
+function validateLName() {
+    var name = document.getElementById('lname').value;
+
+    if(name.length == 0) {
+        lnameError.innerHTML = 'Name is required';
+        return false;
+    }
+
+    if(!name.match(/^[a-zA-Z]/)) {
+        lnameError.innerHTML = 'Only Alphabets';
+        return false;
+    }
+
+    lnameError.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+    return true;
+    
+}
+
+
+function validatePhone() {
+    var phone = document.getElementById('phone').value;
+
+    if(phone.length == 0) {
+        phoneError.innerHTML = 'Phone no is required';
+        return false;
+    }
+
+    if(phone.length !==10) {
+        phoneError.innerHTML = 'Phone no should be 10 digits';
+        return false;
+    }
+
+    if(!phone.match(/^[0-9]{10}$/)) {
+        phoneError.innerHTML = 'Only digits please';
+        return false;
+    }
+
+    phoneError.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+    return true;
+    
+}
+
+function validateForm() {
+    if(!validateFName() || !validateLName() || !validatePhone()) {
+        submitError.style.display = 'block';
+        submitError.innerHTML = "Please fix error to submit";
+        setTimeout(function(){submitError.style.display = 'none';}, 3000)
+        return false;
+    }
+}
